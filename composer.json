@@ -1,0 +1,19 @@
+{
+    "name": "lirui181/qihui",
+    "description": "The PHP Helper Package",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Tony",
+            "email": "lirui181@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "qihui\\until\\": "src"
+        },
+        "files": [
+            "src/function.php"
+        ]
+    }
+}
