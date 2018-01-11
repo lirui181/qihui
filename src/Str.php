@@ -18,8 +18,10 @@ class Str
      */
     public static function contains($haystack, $needles)
     {
-        foreach ((array) $needles as $needle) {
-            if ($needle != '' && mb_strpos($haystack, $needle) !== false) {
+        foreach ((array)$needles as $needle)
+        {
+            if ($needle != '' && mb_strpos($haystack, $needle) !== false)
+            {
                 return true;
             }
         }
@@ -36,8 +38,10 @@ class Str
      */
     public static function endsWith($haystack, $needles)
     {
-        foreach ((array) $needles as $needle) {
-            if ((string) $needle === static::substr($haystack, -static::length($needle))) {
+        foreach ((array)$needles as $needle)
+        {
+            if ((string)$needle === static::substr($haystack, -static::length($needle)))
+            {
                 return true;
             }
         }
@@ -54,8 +58,10 @@ class Str
      */
     public static function startsWith($haystack, $needles)
     {
-        foreach ((array) $needles as $needle) {
-            if ($needle != '' && mb_strpos($haystack, $needle) === 0) {
+        foreach ((array)$needles as $needle)
+        {
+            if ($needle != '' && mb_strpos($haystack, $needle) === 0)
+            {
                 return true;
             }
         }
@@ -133,11 +139,13 @@ class Str
     {
         $key = $value;
 
-        if (isset(static::$snakeCache[$key][$delimiter])) {
+        if (isset(static::$snakeCache[$key][$delimiter]))
+        {
             return static::$snakeCache[$key][$delimiter];
         }
 
-        if (!ctype_lower($value)) {
+        if (!ctype_lower($value))
+        {
             $value = preg_replace('/\s+/u', '', $value);
 
             $value = static::lower(preg_replace('/(.)(?=[A-Z])/u', '$1' . $delimiter, $value));
@@ -154,7 +162,8 @@ class Str
      */
     public static function camel($value)
     {
-        if (isset(static::$camelCache[$value])) {
+        if (isset(static::$camelCache[$value]))
+        {
             return static::$camelCache[$value];
         }
 
@@ -171,7 +180,8 @@ class Str
     {
         $key = $value;
 
-        if (isset(static::$studlyCache[$key])) {
+        if (isset(static::$studlyCache[$key]))
+        {
             return static::$studlyCache[$key];
         }
 

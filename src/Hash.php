@@ -17,16 +17,22 @@ class Hash
 
     public static function handle($type)
     {
-        if (is_null($type)) {
-            if (PHP_VERSION_ID >= 50500) {
+        if (is_null($type))
+        {
+            if (PHP_VERSION_ID >= 50500)
+            {
                 $type = 'bcrypt';
-            } else {
+            }
+            else
+            {
                 $type = 'md5';
             }
         }
-        if (empty(self::$handle[$type])) {
-            $class = "\\think\\helper\\hash\\" . ucfirst($type);
-            if (!class_exists($class)) {
+        if (empty(self::$handle[$type]))
+        {
+            $class = "\\qihui\\until\\hash\\" . ucfirst($type);
+            if (!class_exists($class))
+            {
                 throw new \ErrorException("Not found {$type} hash type!");
             }
             self::$handle[$type] = new $class();

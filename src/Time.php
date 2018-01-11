@@ -12,8 +12,7 @@ class Time
     {
         list($y, $m, $d) = explode('-', date('Y-m-d'));
         return [
-            mktime(0, 0, 0, $m, $d, $y),
-            mktime(23, 59, 59, $m, $d, $y)
+            mktime(0, 0, 0, $m, $d, $y), mktime(23, 59, 59, $m, $d, $y)
         ];
     }
 
@@ -26,8 +25,7 @@ class Time
     {
         $yesterday = date('d') - 1;
         return [
-            mktime(0, 0, 0, date('m'), $yesterday, date('Y')),
-            mktime(23, 59, 59, date('m'), $yesterday, date('Y'))
+            mktime(0, 0, 0, date('m'), $yesterday, date('Y')), mktime(23, 59, 59, date('m'), $yesterday, date('Y'))
         ];
     }
 
@@ -67,8 +65,7 @@ class Time
     {
         list($y, $m, $t) = explode('-', date('Y-m-t'));
         return [
-            mktime(0, 0, 0, $m, 1, $y),
-            mktime(23, 59, 59, $m, $t, $y)
+            mktime(0, 0, 0, $m, 1, $y), mktime(23, 59, 59, $m, $t, $y)
         ];
     }
 
@@ -79,10 +76,10 @@ class Time
      */
     public static function lastMonth()
     {
-        $y = date('Y');
-        $m = date('m');
+        $y     = date('Y');
+        $m     = date('m');
         $begin = mktime(0, 0, 0, $m - 1, 1, $y);
-        $end = mktime(23, 59, 59, $m - 1, date('t', $begin), $y);
+        $end   = mktime(23, 59, 59, $m - 1, date('t', $begin), $y);
 
         return [$begin, $end];
     }
@@ -96,8 +93,7 @@ class Time
     {
         $y = date('Y');
         return [
-            mktime(0, 0, 0, 1, 1, $y),
-            mktime(23, 59, 59, 12, 31, $y)
+            mktime(0, 0, 0, 1, 1, $y), mktime(23, 59, 59, 12, 31, $y)
         ];
     }
 
@@ -110,8 +106,7 @@ class Time
     {
         $year = date('Y') - 1;
         return [
-            mktime(0, 0, 0, 1, 1, $year),
-            mktime(23, 59, 59, 12, 31, $year)
+            mktime(0, 0, 0, 1, 1, $year), mktime(23, 59, 59, 12, 31, $year)
         ];
     }
 
@@ -123,20 +118,20 @@ class Time
     /**
      * 获取几天前零点到现在/昨日结束的时间戳
      *
-     * @param int $day 天数
+     * @param int  $day 天数
      * @param bool $now 返回现在或者昨天结束时间戳
      * @return array
      */
     public static function dayToNow($day = 1, $now = true)
     {
         $end = time();
-        if (!$now) {
+        if (!$now)
+        {
             list($foo, $end) = self::yesterday();
         }
 
         return [
-            mktime(0, 0, 0, date('m'), date('d') - $day, date('Y')),
-            $end
+            mktime(0, 0, 0, date('m'), date('d') - $day, date('Y')), $end
         ];
     }
 

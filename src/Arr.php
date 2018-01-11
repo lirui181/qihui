@@ -13,15 +13,20 @@ class Arr
 
     public static function sortRecursive($array)
     {
-        foreach ($array as &$value) {
-            if (is_array($value)) {
+        foreach ($array as &$value)
+        {
+            if (is_array($value))
+            {
                 $value = static::sortRecursive($value);
             }
         }
 
-        if (static::isAssoc($array)) {
+        if (static::isAssoc($array))
+        {
             ksort($array);
-        } else {
+        }
+        else
+        {
             sort($array);
         }
 

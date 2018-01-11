@@ -4,7 +4,7 @@ namespace qihui\until\hash;
 class Md5
 {
 
-    protected $salt = 'think';
+    protected $salt = 'qihui@$^%#@';
 
     public function make($value, array $options = [])
     {
